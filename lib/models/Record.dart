@@ -6,21 +6,21 @@ class Record {
   String url;
 
   Record({
-    this.name = name,
-    this.address = address,
-    this.contact = contact,
-    this.photo = photo,
-    this.url = url,
-});
+    this.name,
+    this.address,
+    this.contact,
+    this.photo,
+    this.url
+  });
 
-  // This parses given Json string and return record objects. factory constructor can return objects
+  // This parses given Json string and return record objects. factory constructor can return objectso
   factory Record.fromJson(Map<String, dynamic> json){
     return new Record(
-      name: json['name'],
-      address: json['address'],
-      contact: json['contact'],
-      photo: json['photo'],
-      url: json['url']
+        name: json['name'],
+        address: json['address'],
+        contact: json ['contact'],
+        photo: json['photo'],
+        url: json['url']
     );
   }
 }

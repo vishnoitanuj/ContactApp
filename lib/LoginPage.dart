@@ -7,10 +7,10 @@ class LoginPage extends StatelessWidget {
   // 2
   final _pinCodeController = TextEditingController();
 
-  // Build Method is required to be implemented while using StatelessWidget to
-  //draw the UI canvas of the page
+  // 3
   @override
   Widget build(BuildContext context) {
+
     // 3a
     final logo = CircleAvatar(
       backgroundColor: Colors.transparent,
@@ -20,7 +20,7 @@ class LoginPage extends StatelessWidget {
 
     // 3b
     final pinCode = TextFormField(
-      controller: _pinCodeController,       // _ tells compiler that the variable is private
+      controller: _pinCodeController,
       keyboardType: TextInputType.phone,
       maxLength: 4,
       maxLines: 1,
@@ -47,7 +47,9 @@ class LoginPage extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(24),
         ),
-        onPressed: () {},
+        onPressed: () {
+          Navigator.of(context).pushNamed(homePageTag);
+        },
         padding: EdgeInsets.all(12),
         color: appGreyColor,
         child: Text(loginButtonText, style: TextStyle(color: Colors.white)),
