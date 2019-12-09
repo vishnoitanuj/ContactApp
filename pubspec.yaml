@@ -41,6 +41,7 @@ flutter:
   uses-material-design: true
   assets:
     - assets/images/flutter-logo-round.png
+    - assets/data/records.json
 
   # To add assets to your application, add an assets section, like this:
   # assets:
