@@ -67,7 +67,8 @@ class _HomePageState extends State<HomePage>{
       centerTitle: true,
       title: _appBarTitle,
       leading: new IconButton(
-          icon: _searchIcon
+          icon: _searchIcon,
+          onPressed: _searchPressed,
       ),
     );
   }
@@ -146,5 +147,52 @@ class _HomePageState extends State<HomePage>{
       ),
     );
   }
+
+  _HomePageState(){
+    _filter.addListener((){
+      if (_filter.text.isEmpty){
+        setState(() {
+          _searchText = "";
+          _resetRecords();
+        });
+      }
+      else{
+        setState(() {
+          _searchText = _filter.text;
+        });
+      }
+    });
+  }
+
+  void _resetRecords(){
+    this._filteredRecords.records = new List();
+    for(Record record in _records.records){
+      this._filteredRecords.records.add(record);
+    }
+  }
+
+  void _searchPressed(){
+    setState(() {
+      if(this._searchIcon == Icons.search){
+        this._searchIcon = new Icon(Icons.close);
+        this._appBarTitle = new TextField(
+          controller: _filter,
+          style: new TextStyle(color: Colors.white),
+          decoration: new InputDecoration(
+            prefixIcon: new Icon(Icons.search, color: Colors.white,),
+            fillColor: Colors.white,
+            hintText: 'Search by name',
+            hintStyle: TextStyle(color: Colors.white),
+          ),
+        );
+      }
+      else{
+        this._searchIcon = new Icon(Icons.search);
+        this._appBarTitle = new Text(appTitle);
+        _filter.clear();
+      }
+    });
+  }
+
 
 }
