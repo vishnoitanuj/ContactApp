@@ -3,6 +3,7 @@ import 'package:flutter_demo/helpers/Constants.dart';
 import 'models/Record.dart';
 import 'models/RecordList.dart';
 import 'models/RecordService.dart';
+import 'DetailsPage.dart';
 
 class HomePage extends StatefulWidget {
 
@@ -92,6 +93,7 @@ class _HomePageState extends State<HomePage>{
     );
   }
 
+
   Widget _buildListItem(BuildContext context, Record record){
     return Card(
       key: ValueKey(record.name),
@@ -142,7 +144,10 @@ class _HomePageState extends State<HomePage>{
           trailing: Icon(
             Icons.keyboard_arrow_right, color: Colors.white, size: 30.0,
           ),
-          onTap: (){},
+          onTap: (){
+            Navigator.push(
+            context, MaterialPageRoute(builder: (context) => new DetailPage(record: record)));
+          },
         ),
       ),
     );
